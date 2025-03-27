@@ -1,0 +1,58 @@
+.label {
+    display: block;
+    margin-top: 20px;
+    color: green;
+    font-size: 20px;
+    
+}
+.input {
+    display: inline-block ;
+    margin-left: 60px;
+    color: green;
+    font-size: 20px;
+}
+
+.description {
+    display: inline-block ;
+    margin-left: 15px;
+    color: green;
+    font-size: 20px;
+}
+
+.price {
+    display: inline-block ;
+    margin-left: 65px;
+    color: green;
+    font-size: 20px;
+}
+
+.button {
+    color: white;
+    background-color: green;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.table {
+    display: inline-table;
+    margin-top: 20px;
+}
+
+.table-container {
+    text-align: center;
+}
+
+.th {
+    background-color: green;
+    color: white;
+    margin-top: 10px;
+
+}
+.option {
+    color: green;
+    background-color: white;
+    font-size: 15px;
+}
+
+
