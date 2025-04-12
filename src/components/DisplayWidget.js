@@ -2,20 +2,34 @@ import React from 'react';
 import '../css/Widget.css';
 
 const DisplayWidget = () => {
-    const data =
-    [
-        {"name": "Laptop","description": "This is HP laptop","price": "21000"},
-        {"name": "Mobile","description": "Realme mobile","price": "11000" },
-        {"name": "Tab","description": "This is Samsung Tab","price": "10000"},
-        {"name": "VIP","description": "This is Safari VIP","price": "5000"},
-        {"name": "Mouse","description": "This is Logitech mouse","price": "500"}
-    ];
+    const [data,setData] = useState(null);
+    const [loading,setLoading] = useState(true);
+    const [error,setError] = useState(null);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/v1/getAllWidgets")
+        .then((response) => {
+            if(!response.ok){
+                    throw new Error('Network response are not Ok');
+            } 
+            return response.json();
+        }).then((data) =>{
+            setData(data);
+            setLoading(false);
+        }).catch((error) => {
+            setError(error);
+            setLoading(false);
+        });
+    },[]);
   return (
     <div className="table-container">
         <table className="table">
             <thead>
            <tr className="th">
-            <th>Name</th><th>Description</th><th>Price</th><th>Action</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
            </tr>
             </thead>
             <tbody>
