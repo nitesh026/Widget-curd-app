@@ -11,7 +11,7 @@ const DeleteWidget = () => {
     setLoading(true);
     setError(null);
     try {
-        const response = await fetch("http://localhost:8080/v1/deleteWidget/Laptop",{
+        const response = await fetch("http://localhost:8080/v1/deleteWidget/{name}",{
           method:"DELETE",
           headers:
           { "Content-Type":"Application/json"},
