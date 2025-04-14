@@ -5,6 +5,7 @@ const DeleteWidget = () => {
   const [data,setData] = useState(null);
   const [loading,setLoading] = useState(true);
   const [error,setError] = useState(null);
+  const [name,setName] = useSate('');
   
   const deleteWidget = async () => {
     setLoading(true);
@@ -15,7 +16,7 @@ const DeleteWidget = () => {
           headers:
           { "Content-Type":"Application/json"},
           body: JSON.stringify({
-            "name":"Laptop"
+            "name":{name}
           }),
   });
   if(!response.ok){
@@ -33,7 +34,11 @@ const DeleteWidget = () => {
     <div>
         <label className='label'>
             Name:
-            <input className='input' type='text'/>
+            <input className='input' 
+              type='text'
+              placeHolder ="Name"
+              value = {name}
+              onChange = {()=> setName(e.target.value)}/>
         </label>
         <button className='button' onClick={deleteWidget}>Delete Widget</button>
         <label>{data}</label>
