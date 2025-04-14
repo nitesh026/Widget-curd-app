@@ -5,6 +5,9 @@ const AddWidget = () => {
   const [data,setData] = useState(null);
   const [loading,setLoading] = useState(true);
   const [error,setError] = useState(null);
+  const [name,setName] = useState('');
+  const [description,setDescription] = useSate('');
+  const [price,setPrice] = useState('');
   
   const postData = async () => {
     setLoading(true);
@@ -15,9 +18,9 @@ const AddWidget = () => {
           headers:
           { "Content-Type":"Application/json"},
           body: JSON.stringify({
-            "name":"Laptop",
-            "description":"This is HP Laptop",
-            "price": "12000"
+            "name":{name},
+            "description":{description},
+            "price": {price}
           }),
   });
   if(!response.ok){
@@ -35,15 +38,29 @@ const AddWidget = () => {
     <div>
         <label className='label'>
             Name:
-            <input className='input' type='text'/>
+            <input className='input' 
+              type="text"
+              placeHolder ="Name"
+              value = {name}
+              onChange = {()=> setName(e.target.value)}
+              />
         </label>
         <label className='label'>
             Description:
-            <input className='description' type='text'/>
+            <input className='description' 
+              type='text'
+              placeHolder ="Description"
+              value = {description}
+              onChange = {()=> setDescription(e.target.value)}
+            />
         </label>
         <label className='label'>
             Price:
-            <input className='price' type='text'/>
+            <input className='price' type='text'
+              placeHolder ="Price"
+              value = {price}
+              onChange = {()=> setPrice(e.target.value)}
+              />
         </label>
         <button className='button' onClick={addWidgets}>Add Widget</button>
     </div>
